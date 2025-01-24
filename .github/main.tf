@@ -10,7 +10,7 @@ terraform {
     organization = "trial_accunt"
 
     workspaces {
-      name = "gh-actions-demo"
+      name = "check_cicd_with_snowflake_demo"
     }
   }
 }
