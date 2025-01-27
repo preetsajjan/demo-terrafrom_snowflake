@@ -44,6 +44,7 @@ resource "snowflake_table" "sensor" {
   database = snowflake_database.demo_db.name
   schema   = snowflake_schema.demo_schema.name
   name     = "WEATHER_JSON"
+
   column {
     name    = "var"
     type    = "VARIANT"
@@ -70,8 +71,9 @@ resource "snowflake_stage" "example_stage" {
   url         = "s3://snowflake-nse-data/"
   database    = snowflake_database.demo_db.name
   schema      = snowflake_schema.demo_schema.name
+
   credentials = <<-EOT
-    AWS_KEY_ID='${var.access_key}' AWS_SECRET_KEY='${var.secret_key}'
+    AWS_KEY_ID="${var.access_key}" AWS_SECRET_KEY="${var.secret_key}"
   EOT
 }
 
@@ -83,7 +85,7 @@ resource "snowflake_view" "view" {
   comment = "comment"
 
   statement = <<-SQL
-    select * from WEATHER_JSON;
+    SELECT * FROM WEATHER_JSON;
   SQL
 
   or_replace = false
