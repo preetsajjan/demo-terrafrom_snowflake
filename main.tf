@@ -17,7 +17,7 @@ terraform {
 
 provider "snowflake" {
   account  = var.snowflake_account
-  username     = var.snowflake_user
+  username = var.snowflake_user
   password = var.snowflake_password
   region   = var.snowflake_region
 }
@@ -67,14 +67,9 @@ resource "snowflake_file_format" "json" {
 
 resource "snowflake_stage" "example_stage" {
   name        = "EXAMPLE_STAGE"
-  url         = "s3://snowflake-nse-data/"
+  url         = "snowflake://HR31688.snowflakecomputing.com/~/stage_location"
   database    = snowflake_database.demo_db.name
   schema      = snowflake_schema.demo_schema.name
-
-  credentials = <<-EOT
-    AWS_KEY_ID="${var.access_key}" AWS_SECRET_KEY="${var.secret_key}"
-  EOT
-}
 
 resource "snowflake_view" "view" {
   database = snowflake_database.demo_db.name
