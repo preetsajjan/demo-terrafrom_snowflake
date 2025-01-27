@@ -99,3 +99,4 @@ resource "null_resource" "insert_dummy_data" {
       "
     EOT
   }
+}
