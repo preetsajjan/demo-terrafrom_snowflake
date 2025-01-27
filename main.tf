@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     snowflake = {
-      source  = "chanzuckerberg/snowflake"
+      source  = "Snowflake-Labs/snowflake"
       version = "0.25.17"
     }
   }
@@ -16,6 +16,10 @@ terraform {
 }
 
 provider "snowflake" {
+SNOWFLAKE_REGION = "singapore_asia_pacific"
+SNOWFLAKE_ACCOUNT = "HR31688"
+SNOWFLAKE_USER = "PREETIMITRA"
+SNOWFLAKE_PASSWORD = "Preetimitra@2024"
 }
 
 resource "snowflake_database" "demo_db" {
