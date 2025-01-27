@@ -37,3 +37,15 @@ resource "snowflake_schema" "demo_schema" {
   name     = "DEMO_SCHEMA"
   comment  = "Schema for Snowflake Terraform demo"
 }
+
+resource "snowflake_table" "sensor" {
+  database = snowflake_database.demo_db.name
+  schema   = snowflake_schema.demo_schema.name
+  name     = "WEATHER_JSON"
+
+  column {
+    name    = "var"
+    type    = "VARIANT"
+    comment = "Raw sensor data"
+  }
+}
