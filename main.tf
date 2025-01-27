@@ -84,3 +84,4 @@ resource "snowflake_view" "view" {
 
   or_replace = false
   is_secure  = false
+}
