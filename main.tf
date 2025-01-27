@@ -22,6 +22,8 @@ provider "snowflake" {
   region   = var.SNOWFLAKE_REGION
 }
 
+variable "SNOWFLAKE_ACCOUNT" {}
+
 resource "snowflake_database" "demo_db" {
   name    = "DEMO_DB"
   comment = "Database for Snowflake Terraform demo"
@@ -61,7 +63,7 @@ resource "snowflake_file_format" "json" {
 
 resource "snowflake_stage" "example_stage" {
   name        = "EXAMPLE_STAGE"
-  url         = "snowflake://HR31688.snowflakecomputing.com/~/stage_location"
+  url         = "snowflake://HR31688.snowflakecomputing.com/~/example_stage"
   database    = snowflake_database.demo_db.name
   schema      = snowflake_schema.demo_schema.name
 }
