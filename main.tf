@@ -22,10 +22,10 @@ provider "snowflake" {
   region   = var.SNOWFLAKE_REGION
 }
 
-variable "SNOWFLAKE_ACCOUNT" {}
-variable "SNOWFLAKE_USER" {}
-variable "SNOWFLAKE_PASSWORD" {}
-variable "SNOWFLAKE_REGION" {}
+-var "SNOWFLAKE_ACCOUNT" {}
+-var "SNOWFLAKE_USER" {}
+-var "SNOWFLAKE_PASSWORD" {}
+-var "SNOWFLAKE_REGION" {}
 
 
 resource "snowflake_database" "demo_db" {
