@@ -66,7 +66,7 @@ resource "snowflake_file_format" "json" {
 
 resource "snowflake_stage" "example_stage" {
   name        = "EXAMPLE_STAGE"
-  url         = "snowflake://HR31688.snowflakecomputing.com/~/example_stage"
+  url         = "@~/example_stage"
   database    = snowflake_database.demo_db.name
   schema      = snowflake_schema.demo_schema.name
 }
