@@ -85,3 +85,17 @@ resource "snowflake_view" "view" {
   or_replace = false
   is_secure  = false
 }
+
+# Insert dummy data into WEATHER_JSON table
+resource "snowflake_sql" "insert_data" {
+  database = snowflake_database.demo_db.name
+  schema   = snowflake_schema.demo_schema.name
+  statement = <<SQL
+    INSERT INTO WEATHER_JSON (var)
+    VALUES
+      (PARSE_JSON('{"sensor_id": 1, "location": "Singapore", "temperature": 30.5, "humidity": 70, "timestamp": "2025-01-27T12:00:00Z"}')),
+      (PARSE_JSON('{"sensor_id": 2, "location": "New York", "temperature": -2.3, "humidity": 55, "timestamp": "2025-01-27T12:10:00Z"}')),
+      (PARSE_JSON('{"sensor_id": 3, "location": "Tokyo", "temperature": 16.4, "humidity": 80, "timestamp": "2025-01-27T12:20:00Z"}')),
+      (PARSE_JSON('{"sensor_id": 4, "location": "London", "temperature": 10.2, "humidity": 60, "timestamp": "2025-01-27T12:30:00Z"}'));
+SQL
+}
