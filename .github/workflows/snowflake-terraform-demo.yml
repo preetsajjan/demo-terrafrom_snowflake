@@ -17,16 +17,6 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           cli_config_credentials_token: ${{ secrets.API_TOKEN }}
-          
-      - name: Install SnowSQL
-        run: |
-          curl -o snowsql.exe -L https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/windows_x86_64/snowsql.exe
-          .\snowsql.exe -n # This runs the SnowSQL installer in non-interactive mode
-          setx PATH "%PATH%;C:\Program Files\SnowSQL" # Add SnowSQL to the PATH
-
-      # Verify SnowSQL Installation
-      - name: Verify SnowSQL
-        run: snowsql -v
 
       - name: Terraform Format
         id: fmt
