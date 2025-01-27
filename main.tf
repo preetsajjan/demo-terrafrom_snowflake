@@ -22,7 +22,11 @@ provider "snowflake" {
   region   = var.SNOWFLAKE_REGION
 }
 
--var "SNOWFLAKE_ACCOUNT" {}
+variable "SNOWFLAKE_ACCOUNT" { 
+description = "The Snowflake account name" 
+type        = string 
+}
+
 -var "SNOWFLAKE_USER" {}
 -var "SNOWFLAKE_PASSWORD" {}
 -var "SNOWFLAKE_REGION" {}
