@@ -49,3 +49,17 @@ resource "snowflake_table" "sensor" {
     comment = "Raw sensor data"
   }
 }
+
+resource "snowflake_file_format" "json" {
+  name                 = "JSON_FORMAT"
+  database             = snowflake_database.demo_db.name
+  schema               = snowflake_schema.demo_schema.name
+  format_type          = "JSON"
+  strip_outer_array    = true
+  compression          = "NONE"
+  binary_format        = "HEX"
+  date_format          = "AUTO"
+  time_format          = "AUTO"
+  timestamp_format     = "AUTO"
+  skip_byte_order_mark = true
+}
