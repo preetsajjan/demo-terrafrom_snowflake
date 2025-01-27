@@ -63,3 +63,24 @@ resource "snowflake_file_format" "json" {
   timestamp_format     = "AUTO"
   skip_byte_order_mark = true
 }
+
+resource "snowflake_stage" "example_stage" {
+  name        = "EXAMPLE_STAGE"
+  url         = "snowflake://HR31688.snowflakecomputing.com/~/example_stage"
+  database    = snowflake_database.demo_db.name
+  schema      = snowflake_schema.demo_schema.name
+}
+
+resource "snowflake_view" "view" {
+  database = snowflake_database.demo_db.name
+  schema   = snowflake_schema.demo_schema.name
+  name     = "NEW_VIEW"
+
+  comment = "comment"
+
+  statement = <<-SQL
+    SELECT * FROM WEATHER_JSON;
+  SQL
+
+  or_replace = false
+  is_secure  = false
