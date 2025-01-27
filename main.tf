@@ -27,10 +27,20 @@ description = "The Snowflake account name"
 type        = string 
 }
 
--var "SNOWFLAKE_USER" {}
--var "SNOWFLAKE_PASSWORD" {}
--var "SNOWFLAKE_REGION" {}
+variable "SNOWFLAKE_USER" { 
+description = "The Snowflake account user" 
+type        = string 
+}
 
+variable "SNOWFLAKE_PASSWORD" { 
+description = "The Snowflake account password" 
+type        = string 
+}
+
+variable "SNOWFLAKE_REGION" { 
+description = "The Snowflake account region" 
+type        = string 
+}
 
 resource "snowflake_database" "demo_db" {
   name    = "DEMO_DB"
