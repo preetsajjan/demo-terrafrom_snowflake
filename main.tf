@@ -85,18 +85,3 @@ resource "snowflake_view" "view" {
   or_replace = false
   is_secure  = false
 }
-
-resource "null_resource" "insert_dummy_data" {
-  provisioner "local-exec" {
-    command = <<EOT
-      snowsql -a ${var.SNOWFLAKE_ACCOUNT} -u ${var.SNOWFLAKE_USER} -p ${var.SNOWFLAKE_PASSWORD} -r ${var.SNOWFLAKE_REGION} -q "
-        INSERT INTO DEMO_DB.DEMO_SCHEMA.WEATHER_JSON (var)
-        VALUES
-          (PARSE_JSON('{"sensor_id": 1, "location": "Singapore", "temperature": 30.5, "humidity": 70, "timestamp": "2025-01-27T12:00:00Z"}')),
-          (PARSE_JSON('{"sensor_id": 2, "location": "New York", "temperature": -2.3, "humidity": 55, "timestamp": "2025-01-27T12:10:00Z"}')),
-          (PARSE_JSON('{"sensor_id": 3, "location": "Tokyo", "temperature": 16.4, "humidity": 80, "timestamp": "2025-01-27T12:20:00Z"}')),
-          (PARSE_JSON('{"sensor_id": 4, "location": "London", "temperature": 10.2, "humidity": 60, "timestamp": "2025-01-27T12:30:00Z"}'));
-      "
-    EOT
-  }
-}
