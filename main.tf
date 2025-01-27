@@ -70,6 +70,7 @@ resource "snowflake_stage" "example_stage" {
   url         = "snowflake://HR31688.snowflakecomputing.com/~/stage_location"
   database    = snowflake_database.demo_db.name
   schema      = snowflake_schema.demo_schema.name
+}
 
 resource "snowflake_view" "view" {
   database = snowflake_database.demo_db.name
