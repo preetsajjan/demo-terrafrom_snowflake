@@ -16,11 +16,17 @@ terraform {
 }
 
 provider "snowflake" {
-SNOWFLAKE_REGION = "singapore_asia_pacific"
-SNOWFLAKE_ACCOUNT = "HR31688"
-SNOWFLAKE_USER = "PREETIMITRA"
-SNOWFLAKE_PASSWORD = "Preetimitra@2024"
+  account  = var.snowflake_account
+  user     = var.snowflake_user
+  password = var.snowflake_password
+  region   = var.snowflake_region
 }
+
+variable "snowflake_account" {}
+variable "snowflake_user" {}
+variable "snowflake_password" {}
+variable "snowflake_region" {}
+
 
 resource "snowflake_database" "demo_db" {
   name    = "DEMO_DB"
