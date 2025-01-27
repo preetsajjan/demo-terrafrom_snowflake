@@ -23,6 +23,9 @@ provider "snowflake" {
 }
 
 variable "SNOWFLAKE_ACCOUNT" {}
+variable "SNOWFLAKE_USER" {}
+variable "SNOWFLAKE_PASSWORD" {}
+variable "SNOWFLAKE_REGION" {}
 
 resource "snowflake_database" "demo_db" {
   name    = "DEMO_DB"
